@@ -1,4 +1,4 @@
-![SSSS Mobile Logo](http://ssssmobile.app/ssss_icon_114.png)
+![SSSS Mobile Logo](https://raw.githubusercontent.com/drunnells/SSSS-Mobile/master/app/assets/android/appicon.png)
 
 # SSSS Mobile
 ## Shamir's Secret Sharing Scheme Split & Combine Functions for Android & iOS
