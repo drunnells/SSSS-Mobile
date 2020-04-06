@@ -1,7 +1,7 @@
 /*
  * SSSS Mobile - 2020 Dustin Runnells
  * 
- * Based on the SSSS tool by B. Poettering (http://point-at-infinity.org/ssss/>http://point-at-infinity.org/ssss/) using the ssss-js
+ * Based on the SSSS tool by B. Poettering (http://point-at-infinity.org/ssss/) using the ssss-js
  * library by Gabriel Burca (https://www.npmjs.com/package/ssss-js).
  * 
  * Depends on:
