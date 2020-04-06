@@ -1,0 +1,109 @@
+<Alloy>
+	<TabGroup>
+		<Tab id="splitTab" title="Split">
+			<Window title="SSSS Split" navBarHidden="true" id="winSplit">
+				<ScrollView layout="vertical" width="Ti.UI.SIZE" contentHeight="auto" scrollType="vertical">
+					<View id="splitView" height="Ti.UI.SIZE">
+						<View id="splitBoxTitle" class="boxTitle">
+							<Label class="titleText1">SSSS</Label>
+							<Label class="titleText2">Shamir's Secret Sharing Scheme</Label>
+							<Label class="titleText3">M O B I L E</Label>
+							<ImageView id='splitHelpBtn' class='helpBtn'></ImageView>
+						</View>
+						<View id="boxSM">
+							<Label id="textInputLabelSM" class="textInputLabel">Secret Message</Label>
+							<TextField id="textInputFieldSM" keyboardType="Ti.UI.KEYBOARD_TYPE_DEFAULT" />
+						</View>
+						<View id="boxThreshold">
+							<Label id="textInputLabelThreshold" class="textInputLabel">Threshold</Label>
+							<TextField id="textInputFieldThreshold" keyboardType="Ti.UI.KEYBOARD_TYPE_NUMBER_PAD" />
+						</View>
+						<View id="boxShares">
+							<Label id="textInputLabelShares" class="textInputLabel">Shares</Label>
+							<TextField id="textInputFieldShares" keyboardType="Ti.UI.KEYBOARD_TYPE_NUMBER_PAD" />
+						</View>
+						<View id="boxToken">
+							<Label id="textInputLabelToken" class="textInputLabel">Token</Label>
+							<TextField id="textInputFieldToken" keyboardType="Ti.UI.KEYBOARD_TYPE_DEFAULT" />
+						</View>
+						<Button id='splitBtn'>Split!</Button>
+						<View id="boxSplitResults">
+    						<Label id="titleLabelSplitResults">Shares</Label>
+						</View>
+					</View>
+				</ScrollView>
+				<View id="splitShareView">
+				    <View id="splitShareBackgroundView"></View>
+    				<ScrollView id="splitShareScrollContainer" layout="vertical" width="90%" height="90%" contentHeight="auto" scrollType="vertical">
+                        <View id="splitShareContainer" height="Ti.UI.SIZE">
+    				        <WebView id="splitShareQrCodeView"></WebView>
+	    			        <Label id="splitShareText"></Label>
+	    			        <View id="shareActionButtons">
+		    		            <ImageView id="splitShareEmailBtn"></ImageView>
+		    		            <ImageView id="splitShareNfcBtn"></ImageView>
+	    			        </View>
+			    			<Button id='splitShareDoneBtn'>Done</Button>
+    				    </View>
+       				</ScrollView>
+				</View>
+			    <View id="writeNfcBox">
+			        <Label id="writeNfcBoxText">Approach NFC Tag for writing.</Label>
+			    </View>
+				<View id="splitHelpView" class="helpView">
+				    <View class="helpBackgroundView"></View>
+				    <View class="helpContainerView">
+    				    <WebView id="splitHelpWebview" class="helpWebview"></WebView>
+    				    <Label class="helpCloseLabel" onClick="closeHelp">Close</Label>
+				    </View>
+				</View>
+			</Window>
+		</Tab>
+		<Tab id="combineTab" title="Combine">
+			<Window title="SSSS Combine" navBarHidden="true" id="winCombine">
+				<ScrollView layout="vertical" width="Ti.UI.SIZE" contentHeight="auto" scrollType="vertical">
+					<View id="combineView" height="Ti.UI.SIZE">
+						<View id="combineBoxTitle" class="boxTitle">
+							<Label class="titleText1">SSSS</Label>
+							<Label class="titleText2">Shamir's Secret Sharing Scheme</Label>
+							<Label class="titleText3">M O B I L E</Label>
+							<ImageView id='combineHelpBtn' class='helpBtn'></ImageView>
+						</View>
+						<View id="boxCombine">
+   							<Label id="textAreaLabelCombine" class="textInputLabel">Enter shares to combine (one per line):</Label>
+						    <View id="textAreaCombineContainer">
+         						<TextArea id="textAreaCombine"></TextArea>
+    						    <View id="scanIconsContainer">
+        		    		        <ImageView id="scanIconQr"></ImageView>
+    	    	    		        <ImageView id="scanIconNfc"></ImageView>
+    	    	    		        <ImageView id="scanIconPaste"></ImageView>
+    	    	    		        <ImageView id="scanIconTrash"></ImageView>
+			    			    </View>
+						    </View>
+						</View>
+						<Button id='combineBtn'>Combine!</Button>
+						<View id="boxCombineResults">
+    						<Label id="titleLabelCombineResults">Secret</Label>
+    						<View id="combineResult">
+    						    <Label id="combineResultValue"></Label>
+    						    <View id="combinedIconsContainer">
+        		    		        <ImageView id="combinedIconCopy"></ImageView>
+			    			    </View>
+    						</View>
+						</View>
+					</View>
+				</ScrollView>
+			    <View id="combineOverlayView"></View>
+			    <View id="scanNfcBox">
+			        <Label id="scanNfcBoxText">Approach NFC Tag for reading.</Label>
+			    </View>
+				<View id="combineHelpView" class="helpView">
+				    <View class="helpBackgroundView"></View>
+				    <View class="helpContainerView">
+    				    <WebView id="combineHelpWebview" class="helpWebview"></WebView>
+    				    <Label class="helpCloseLabel" onClick="closeHelp">Close</Label>
+				    </View>
+				</View>
+			</Window>
+		</Tab>
+	</TabGroup>
+</Alloy>

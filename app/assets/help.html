@@ -1,0 +1,103 @@
+<html>
+        <head>
+                <META HTTP-EQUIV="Content-Type" content="text/html; charset=utf-8" />
+                <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+                <META HTTP-EQUIV="Expires" CONTENT="-1">
+                <META NAME="viewport" CONTENT="user-scalable=no, maximum-scale = 1.0, initial-scale = 1.0, width=device-width, height=device-height" />
+                <style> 
+		body {
+			width: 100%;
+			padding: 0;
+			margin: 0;
+			overflow-x: hidden;
+			font-family: arial;
+			color: black;
+			background-color: white;
+		}
+		h1 {
+			font-size: 2em;
+			line-height: 0px;
+		}
+		h2 {
+			font-size: 1.6em;
+			line-height: 0px;
+		}
+		#titleIcon {
+			margin: 20px auto 0  auto;
+			border: 1px solid black;
+			width: 40%;
+			display: block;
+		}
+		.titleText {
+			font-size: 2em;
+			display: block;
+		}
+		.titleBy {
+			font-size: 1em;
+			display: block;
+		}
+		#mainContent {
+			width: 100%;
+			overflow-x: hidden;
+			margin-top: 2em;
+			width: 90%;
+			text-align: left;
+			font-size: 1em;
+		}
+
+		#titleVersion {
+			font-size: 1em;
+			display: block;
+			color: #777777;
+		}
+		</style>
+	</head>
+	<body>
+		<center>
+		<img id="titleIcon" src="helpIcon.png">
+		<span class="titleText">SSSS Mobile</span>
+		<span id="titleVersion">v0</span>
+		<span class="titleBy">by Dustin Runnells</span>
+		<div id="mainContent">
+<h1>Split</h1>
+<br>
+The parameters on this tab will let you create a set of new shares.<br>
+<br>
+<b>Secret Message</b>: The message to be split. This must be a short message of less than 128 characters long. If you need to use this tool on anything larger, consider encrypting with a strong PGP/GPG symmetric cipher and SSSS splitting only the password.<br>
+<br>
+<b>Threshold</b>: This is the exact number of <i>shares</i> required to reassemble your secret message. Any combination of this number of <i>shares</i> will allow you to retrieve your message. Remember this number as you will be unable to reassemble your secret message without knowing the exact <i>threshold</i> needed for the set.<br>
+<br>
+<b>Shares</b>: This is the total number of <i>shares</i> generated. The total number of <i>shares</i> must be equal to or larger than the <i>threshold</i>.<br>
+<br>
+<b>Token</b>: The <i>Token</i> is optional short text string that will prefix all SSSS shares in this set. The <i>Token</i> may be used to indicate the significance of the message contents and/or the <i>threshold</i> required for retrieval.<br>
+<br>
+Once your shares have been generated they will appear on the bottom half of the screen. Shares can be copied to the clipboard or shared. Clicking the "share" icon will give you a QR Code representation of the current share, an option to email the share and QR Code and an option to write the share to an NFC tag (not available on all devices).<br>
+<br>
+<h1>Combine</h1>
+<br>
+The Combine tab has only one text area to enter all SSSS shares needed to reassemble a message. Shares can be pasted into the text area, retrieved from QR Code or scanned from NFC tags (not available on all devices). Note that you must enter exactly the correct number of shares set by the <i>threshold</i> to retrieve the split message. Too many or too few shares will result an an error OR incorrect secret message.<br>
+<br>
+<h1>Credits</h1>
+<br>
+SSSS Mobile created by Dustin Runnells (dustin@runnells.name) with Axway Appcelerator Studio. Original graphics created with Inkscape and Gimp.<br><br>
+Based on the SSSS tool by B. Poettering (<a href="#" onclick=" Titanium.App.fireEvent('webviewOpenURL', {url:'http://point-at-infinity.org/ssss/'}); return false;">http://point-at-infinity.org/ssss/</a>) using the ssss-js library by Gabriel Burca (<a href="#" onclick=" Titanium.App.fireEvent('webviewOpenURL', {url:'https://www.npmjs.com/package/ssss-js'}); return false;">https://www.npmjs.com/package/ssss-js</a>)<br>
+<h2>Icons:</h2>
+Sergey Ershov (<a href="#" onclick=" Titanium.App.fireEvent('webviewOpenURL', {url:'https://www.iconfinder.com/iconsets/multimedia-75'}); return false;">https://www.iconfinder.com/iconsets..</a>)<br>
+Paste Icon by Freepik (<a href="#" onclick=" Titanium.App.fireEvent('webviewOpenURL', {url:'https://www.flaticon.com/free-icon/paste_178922'}); return false;">https://www.flaticon.com/free-icon/paste_178922</a>)<br>
+QR Icon: Midnat Studio<br>
+<h2>Font:</h2>
+Arimo by Steve Matteson (<a href="#" onclick=" Titanium.App.fireEvent('webviewOpenURL', {url:'https://fonts.google.com/specimen/Arimo'}); return false;">https://fonts.google.com/specimen/Arimo</a>)<br>
+<br>
+<h2>Other:</h2>
+bignumber.js by Michael Mclaughlin (<a href="#" onclick=" Titanium.App.fireEvent('webviewOpenURL', {url:'https://github.com/MikeMcl/bignumber.js'}); return false;">https://github.com/MikeMcl/bignumber.js</a>)<br>
+qrcodejs by Shim Sangmin (<a href="#" onclick=" Titanium.App.fireEvent('webviewOpenURL', {url:'https://github.com/davidshimjs/qrcodejs'}); return false;">https://github.com/davidshimjs/qrcodejs</a>)<br>
+<br>
+		</div>
+		</center>
+	</body>
+<script>
+function setVersion(inVersion) {
+	document.getElementById("titleVersion").innerHTML = inVersion;
+}
+</script>
+</html>

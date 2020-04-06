@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.dustinrunnells.ssss" android:versionCode="7" android:versionName="1.0.1.0">
+	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="28"/>
+	<application android:icon="@drawable/appicon" android:label="SSSS Mobile" android:name="SsssMobileApplication" android:debuggable="false" android:usesCleartextTraffic="true" android:theme="@style/Theme.AppCompat.NoTitleBar.Fullscreen" android:resizeableActivity="true">
+		<activity android:name=".SsssMobileActivity" android:configChanges="fontScale|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode|density" android:label="@string/app_name" android:theme="@style/Theme.Titanium" android:alwaysRetainTaskState="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN"/>
+				<category android:name="android.intent.category.LAUNCHER"/>
+			</intent-filter>
+		</activity>
+		<activity android:name="org.appcelerator.titanium.TiActivity" android:configChanges="fontScale|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode|density"/>
+		<activity android:name="org.appcelerator.titanium.TiTranslucentActivity" android:configChanges="fontScale|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode|density" android:theme="@style/Theme.Titanium.Translucent"/>
+		<activity android:name="ti.modules.titanium.media.TiCameraActivity" android:configChanges="fontScale|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode|density" android:theme="@style/Theme.AppCompat.Translucent.NoTitleBar.Fullscreen"/>
+		<activity android:name="ti.modules.titanium.media.TiVideoActivity" android:configChanges="fontScale|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode|density" android:theme="@style/Theme.AppCompat.Fullscreen"/>
+		<activity android:name="ti.modules.titanium.ui.android.TiPreferencesActivity"/>
+		<activity android:name="com.google.zxing.client.android.CaptureActivity" android:screenOrientation="landscape" android:clearTaskOnLaunch="true" android:stateNotNeeded="true" android:configChanges="orientation|keyboardHidden" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" android:windowSoftInputMode="stateAlwaysHidden">
+			<intent-filter>
+				<action android:name="com.google.zxing.client.android.SCAN"/>
+				<category android:name="android.intent.category.DEFAULT"/>
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW"/>
+				<category android:name="android.intent.category.DEFAULT"/>
+				<category android:name="android.intent.category.BROWSABLE"/>
+				<data android:scheme="http" android:host="zxing.appspot.com" android:path="/scan"/>
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW"/>
+				<category android:name="android.intent.category.DEFAULT"/>
+				<category android:name="android.intent.category.BROWSABLE"/>
+				<data android:scheme="http" android:host="www.google.com" android:path="/m/products/scan"/>
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW"/>
+				<category android:name="android.intent.category.DEFAULT"/>
+				<category android:name="android.intent.category.BROWSABLE"/>
+				<data android:scheme="http" android:host="www.google.co.uk" android:path="/m/products/scan"/>
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW"/>
+				<category android:name="android.intent.category.DEFAULT"/>
+				<category android:name="android.intent.category.BROWSABLE"/>
+				<data android:scheme="zxing" android:host="scan" android:path="/"/>
+			</intent-filter>
+		</activity>
+		<activity android:name="com.google.zxing.client.android.PreferencesActivity" android:label="@string/preferences_name" android:stateNotNeeded="true"/>
+		<activity android:name="com.google.zxing.client.android.encode.EncodeActivity" android:label="@string/share_name" android:stateNotNeeded="true">
+			<intent-filter>
+				<action android:name="com.google.zxing.client.android.ENCODE"/>
+				<category android:name="android.intent.category.DEFAULT"/>
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.SEND"/>
+				<category android:name="android.intent.category.DEFAULT"/>
+				<data android:mimeType="text/x-vcard"/>
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.SEND"/>
+				<category android:name="android.intent.category.DEFAULT"/>
+				<data android:mimeType="text/plain"/>
+			</intent-filter>
+		</activity>
+		<activity android:name="com.google.zxing.client.android.book.SearchBookContentsActivity" android:label="@string/sbc_name" android:stateNotNeeded="true" android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden">
+			<intent-filter>
+				<action android:name="com.google.zxing.client.android.SEARCH_BOOK_CONTENTS"/>
+				<category android:name="android.intent.category.DEFAULT"/>
+			</intent-filter>
+		</activity>
+		<activity android:name="com.google.zxing.client.android.share.ShareActivity" android:label="@string/share_name" android:stateNotNeeded="true" android:screenOrientation="user" android:theme="@android:style/Theme.Light">
+			<intent-filter>
+				<action android:name="com.google.zxing.client.android.SHARE"/>
+				<category android:name="android.intent.category.DEFAULT"/>
+			</intent-filter>
+		</activity>
+		<activity android:name="com.google.zxing.client.android.history.HistoryActivity" android:label="@string/history_title" android:stateNotNeeded="true">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW"/>
+				<category android:name="android.intent.category.DEFAULT"/>
+			</intent-filter>
+		</activity>
+		<activity android:name="com.google.zxing.client.android.share.BookmarkPickerActivity" android:label="@string/bookmark_picker_name" android:stateNotNeeded="true">
+			<intent-filter>
+				<action android:name="android.intent.action.PICK"/>
+				<category android:name="android.intent.category.DEFAULT"/>
+			</intent-filter>
+		</activity>
+		<activity android:name="com.google.zxing.client.android.share.AppPickerActivity" android:label="@string/app_picker_name" android:stateNotNeeded="true" android:configChanges="orientation">
+			<intent-filter>
+				<action android:name="android.intent.action.PICK"/>
+				<category android:name="android.intent.category.DEFAULT"/>
+			</intent-filter>
+		</activity>
+		<activity android:name="com.google.zxing.client.android.HelpActivity" android:screenOrientation="user">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW"/>
+				<category android:name="android.intent.category.DEFAULT"/>
+			</intent-filter>
+		</activity>
+		<provider android:name="org.appcelerator.titanium.io.TiFileProvider" android:authorities="com.dustinrunnells.ssss.tifileprovider" android:exported="false" android:grantUriPermissions="true"/>
+		<service android:name="com.appcelerator.aps.APSAnalyticsService" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+	</application>
+	<uses-feature android:name="android.hardware.nfc" android:required="false"/>
+	<uses-feature android:name="android.hardware.camera" android:required="false"/>
+	<uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+	<uses-feature android:name="android.hardware.camera.flash" android:required="false"/>
+	<uses-feature android:name="android.hardware.screen.landscape" android:required="false"/>
+	<uses-feature android:name="android.hardware.wifi" android:required="false"/>
+	<uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
+	<uses-feature android:name="android.hardware.location" android:required="false"/>
+	<uses-feature android:name="android.hardware.location.gps" android:required="false"/>
+	<uses-permission android:name="android.permission.CAMERA"/>
+        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	<uses-permission android:name="android.permission.VIBRATE"/>
+	<uses-permission android:name="android.permission.FLASHLIGHT"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.NFC"/>
+</manifest>

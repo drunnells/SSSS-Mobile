@@ -1,0 +1,568 @@
+//
+// Globals
+//
+
+"Window": {
+	backgroundColor: "#fff",
+	font: {
+		fontSize: 20,
+		fontFamily: "Arimo-Regular",
+	},
+}
+
+"Tab": {
+	bubbleParent: false,
+}
+
+"TabGroup": {
+	bubbleParent: false,
+}
+
+"ScrollView": {
+	scrollType: "vertical",
+	showVerticalScrollIndicator : true,
+}
+
+"Label": {
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	color: "#000",
+	font: {
+		fontSize: 20,
+		fontFamily: "Arimo-Regular",
+	},
+	textAlign: "center",
+} 
+
+"Label[platform=android]": {
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	color: "#000",
+	font: {
+		fontSize: 20,
+		fontFamily: "Arimo-Regular.ttf",
+		fontWeight: "bold",
+	},
+}
+
+"TextArea": {
+	color: "#000000",
+	padding : {
+		top: 1,
+		left: '10%',
+		right: '10%'
+	},
+	suppressReturn: false,
+}
+
+"Button": {
+	color: "#ffffff",
+	backgroundColor: "#259778",
+	width: "150dp",
+	height: "50dp",
+	borderRadius: 10,
+	font: {
+		fontSize: 16,
+		fontFamily: "Arimo-Bold",
+	},
+	color: "#ffffff",
+}
+
+"Button[platform=android]": {
+	font: {
+		fontFamily: "Arimo-Bold.ttf",
+	},
+}
+
+"TextField": {
+	color: "#000000",
+	padding : {
+		left: '10%',
+		right: '10%',
+	},
+	borderColor: "#000000",
+	borderWidth: 2,
+	borderRadius: 5,
+	width: "90%",
+	height: 45,
+}
+
+".textInputLabel": {
+	top: "10dp",
+}
+
+"#splitShareView": {
+}
+
+"#splitShareBackgroundView": {
+	width: "100%",
+	height: "100%",
+	backgroundColor: "#000",
+	opacity: 0.5,
+}
+
+"#splitShareScrollContainer": {
+	backgroundColor: "#fff",
+	contentHeight: "auto",
+	borderColor: "#fff",
+	borderWidth: 1,
+	borderRadius: 5,
+	showVerticalScrollIndicator : true,
+}
+
+"#splitShareContainer": {
+	layout: "vertical",			
+	top: "20dp",
+	width: "90%",
+	color: "#000",
+	font: {
+		fontSize: 20,
+		fontFamily: "Arimo-Regular",
+	},
+	textAlign: "center",
+}
+
+"#splitShareQrCodeView": {
+	width: "200dp",
+	height: "200dp",
+	disableBounce: true,
+}
+
+"#splitShareText": {
+	text: "",
+}
+
+"#shareActionButtons": {
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	layout: "horizontal",
+}
+
+"#splitShareEmailBtn": {
+	width: "40dp",
+	height: "40dp",
+	opacity: 1,
+	image: "/icon_email.png",
+	bubbleParent: true,
+}
+
+"#splitShareNfcBtn": {
+	width: "25dp",
+	height: "25dp",
+	opacity: 1,
+	left: "5dp",
+	image: "/icon_nfc.png",
+	bubbleParent: true,
+}
+
+"#splitShareDoneBtn": {
+	top: "16dp",
+}
+//
+// Title Content
+//
+
+".boxTitle": {
+	widht: "100%",
+	height: "160dp",	
+}
+
+".helpBtn": {
+	image: "/icon_questionmark.png",
+	top: "20dp",
+	right: "2dp",
+	width: "40dp",	
+	height: "40dp",	
+	bubbleParent: true,
+}
+
+".titleText1": {
+	font: {
+		fontSize: 72,
+		fontFamily: "Arimo-Bold",
+		fontWeight: "bold",
+	},
+	color: "#F2B21B",
+	top: "20dp",
+}
+
+".titleText1[platform=android]": {
+	font: {
+		fontFamily: "Arimo-Bold.ttf",
+	},
+}
+
+".titleText2": {
+	font: {
+		fontSize: 16,
+		fontFamily: "Arimo-Bold",
+		fontWeight: "bold",
+	},
+	color: "#F2B21B",
+	top: "95dp",
+}
+
+".titleText2[platform=android]": {
+	font: {
+		fontFamily: "Arimo-Bold.ttf",
+	},
+}
+
+".titleText3": {
+	font: {
+		fontSize: 32,
+		fontFamily: "Arimo-Regular",
+		fontWeight: "bold",
+	},
+	color: "#000",
+	top: "120dp",
+}
+
+".titleText3[platform=android]": {
+	font: {
+		fontFamily: "Arimo-Regular.ttf",
+	},
+}
+
+//
+// Split Tab
+//
+
+"#splitTab": {
+	icon: "icon_keys.png",
+}
+
+"#splitTab[platform=android]": {
+	icon: "icon_keys_lg.png",
+}
+
+"#splitView": {
+	backgroundColor: "#fff",
+	layout: "vertical",
+}
+
+"#boxSM": {
+	width: "90%",
+	height: 80,
+}
+
+"#textInputLabelSM": {
+	width: "100%",
+}
+
+"#textInputFieldSM": {
+	width: "100%",
+	bottom: 0,
+}
+
+"#boxThreshold": {
+	width: "29%",
+	height: 80,
+	left: "5%",
+}
+
+"#textInputLabelThreshold": {
+	width: "100%",
+}
+
+"#textInputFieldThreshold": {
+	width: "100%",
+	bottom: 0,
+}
+
+"#boxShares": {
+	width: "29%",
+	height: 80,
+	top: -80,
+}
+
+"#textInputLabelShares": {
+	width: "100%",
+}
+
+"#textInputFieldShares": {
+	width: "100%",
+	bottom: 0,
+}
+
+"#boxToken": {
+	width: "29%",
+	height: 80,
+	right: "5%",
+	top: -80,
+}
+
+"#textInputLabelToken": {
+	width: "100%",
+}
+
+"#textInputFieldToken": {
+	width: "100%",
+	bottom: 0,
+}
+
+"#splitBtn": {
+	top: "20dp",
+}
+
+"#boxSplitResults": {
+	opacity: 1,
+	width: "90%",
+	height: Ti.UI.SIZE,
+	layout: "vertical",
+}
+
+"#titleLabelSplitResults": {
+	font: {
+		fontSize: 20,
+		fontFamily: "Arimo-Regular.ttf",
+		fontWeight: "bold",
+	},
+	top: "16dp",
+}
+
+".splitResultStringBox": {
+	width: "100%",
+	height: Ti.UI.SIZE,
+	layout: "horizontal",
+}
+
+".copyButton": {
+	width: "40dp",
+	height: "40dp",
+	opacity: 1,
+	image: "/icon_copy.png",
+	right: "42dp",
+	bubbleParent: true,
+}
+
+".shareButton": {
+	width: "40dp",
+	height: "40dp",
+	opacity: 1,
+	image: "/icon_share.png",
+	right: 2,
+	bubbleParent: true,
+}
+
+//
+// Combine Tab
+//
+
+"#combineTab": {
+	icon: "icon_lock.png",
+}
+
+"#combineTab[platform=android]": {
+	icon: "icon_lock_lg.png",
+}
+
+"#combineView": {
+	backgroundColor: "#fff",
+	layout: "vertical",
+}
+
+"#boxCombine": {
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	layout: "vertical",
+}
+
+"#textAreaCombineContainer": {
+	layout: "horizontal",
+	borderColor: "#000000",
+	borderWidth: 2,
+	borderRadius: 5,
+	width: "95%",
+	height: 200,	
+}
+
+"#textAreaCombine": {
+	textAlign: "left",
+	width: "90%",
+	height: "100%",
+}
+
+"#scanIconsContainer": {
+	layout: "vertical",
+	borderColor: "#eeeeee",
+	borderWidth: 1,
+	width: "10%",
+	height: "100%",
+}
+
+"#scanIconQr": {
+	width: "30",
+	height: "30",
+	top: 5,
+	image: "/icon_barcode.png",
+	bubbleParent: true,
+}
+
+"#scanIconNfc": {
+	width: "23",
+	height: "23",
+	top: 10,
+	image: "/icon_nfc.png",
+	bubbleParent: true,
+}
+
+"#scanIconPaste": {
+	width: "27",
+	height: "27",
+	top: 10,
+	image: "/icon_paste.png",
+	bubbleParent: true,
+}
+
+"#scanIconTrash": {
+	width: "30",
+	height: "30",
+	top: 10,
+	image: "/icon_trash.png",
+	bubbleParent: true,
+}
+
+"#writeNfcBox": {
+	bottom: '2%',
+	left: '2%',
+	backgroundColor: '#aaaaaa',
+	borderColor: '#333333',
+	width: '96%',
+	height: '40%',
+	borderRadius: 5, 
+	borderWidth: 1,
+	zIndex: 800,
+	visible: false,
+}
+
+"#writeNfcBoxText": {
+	color: 'black',
+	font: { fontSize: '20%' },
+}
+
+"#combineBtn": {
+	top: "20dp",
+}
+
+"#titleLabelCombineResults": {
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	layout: "vertical",
+	font: {
+		fontSize: 20,
+		fontFamily: "Arimo-Regular.ttf",
+		fontWeight: "bold",
+	},
+	top: "16dp",
+}
+
+"#boxCombineResults": {
+	opacity: 0,
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	layout: "vertical",
+}
+
+"#combineResultValue": {
+        width: "86%",
+        height: "98%",
+        textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+        color: "#000",
+        verticalAlign: Titanium.UI.TEXT_VERTICAL_ALIGNMENT_TOP,
+        left: "2%",
+}
+
+"#combineResult": {
+	layout: "horizontal",
+	borderColor: "#000000",
+	borderWidth: 2,
+	borderRadius: 5,
+	width: "95%",
+	height: 200,
+}
+
+"#combinedIconsContainer": {
+	borderColor: "#eeeeee",
+	borderWidth: 1,
+	width: "10%",
+	height: "100%",
+	left: "2%",
+}
+
+"#combinedIconCopy": {
+	width: "30",
+	height: "30",
+	top: 5,
+	image: "/icon_copy.png",
+	bubbleParent: true,
+}
+
+"#combineOverlayView": {
+	width: "100%",
+	height: "100%",
+	backgroundColor: "#000",
+	opacity: 1,
+}
+
+"#scanNfcBox": {
+	bottom: '2%',
+	left: '2%',
+	backgroundColor: '#aaaaaa',
+	borderColor: '#333333',
+	width: '96%',
+	height: '40%',
+	borderRadius: 5, 
+	borderWidth: 1,
+	zIndex: 800,
+	visible: false,
+}
+
+"#scanNfcBoxText": {
+	color: 'black',
+	font: { fontSize: '20%' },
+}
+
+//
+// Help
+//
+".helpView": {
+	width: "100%",
+	height: "100%",
+}
+
+"#splitHelpView": {
+}
+
+".helpBackgroundView": {
+	width: "100%",
+	height: "100%",
+	backgroundColor: "#000",
+	opacity: 0.5,
+}
+
+".helpContainerView": {
+	layout: "vertical",			
+	backgroundColor: "#fff",
+	width: "95%",
+	height: "95%",
+	borderColor: "#000",
+	borderWidth: 2,
+	borderRadius: 10,
+}
+
+".helpCloseLabel": {
+	width: "100%",
+	height: "10%",
+	bottom: 0,
+	color: "#00d",
+}
+
+".helpWebview": {
+	disableBounce: true,
+	top: 0,
+	backgroundColor: "#fff",
+	width: "100%",
+	height: "90%",
+	textAlign: "center",
+}

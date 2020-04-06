@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ti:app xmlns:ti="http://ti.appcelerator.org">
+    <id>com.dustinrunnells.ssss</id>
+    <name>SSSS Mobile</name>
+    <version>1.0.1.0</version>
+    <publisher>Dustin Runnells</publisher>
+    <url>http://dustin.runnells.name</url>
+    <description>A mobile implementation of the Shamir's Secret Sharing Scheme (SSSS). Generate and combine shares using your mobile device's NFC reader and QR Code scanner.</description>
+    <copyright>2020 by Dustin Runnells</copyright>
+    <icon>appicon.png</icon>
+    <fullscreen>true</fullscreen>
+    <navbar-hidden>false</navbar-hidden>
+    <analytics>true</analytics>
+    <guid>6a178cba-6c9b-40e4-9555-7a9a5133cf7c</guid>
+    <property name="ti.ui.defaultunit" type="string">dp</property>
+    <property name="run-on-main-thread" type="bool">true</property>
+    <ios>
+        <enable-launch-screen-storyboard>true</enable-launch-screen-storyboard>
+        <use-app-thinning>false</use-app-thinning>
+        <default-background-color>#259778</default-background-color>
+        <plist>
+            <dict>
+                <key>UISupportedInterfaceOrientations~iphone</key>
+                <array>
+                    <string>UIInterfaceOrientationPortrait</string>
+                </array>
+                <key>UISupportedInterfaceOrientations~ipad</key>
+                <array>
+                    <string>UIInterfaceOrientationPortrait</string>
+                    <string>UIInterfaceOrientationPortraitUpsideDown</string>
+                    <string>UIInterfaceOrientationLandscapeLeft</string>
+                    <string>UIInterfaceOrientationLandscapeRight</string>
+                </array>
+                <key>UIRequiresPersistentWiFi</key>
+                <false/>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+                <key>UIStatusBarHidden</key>
+                <false/>
+                <key>UIStatusBarStyle</key>
+                <string>UIStatusBarStyleDefault</string>
+                <key>NSCameraUsageDescription</key>
+                <string>This app can scan QR Codes with your camera.</string>
+                <key>NSPhotoLibraryUsageDescription</key>
+                <string>This app can scan and store QR Codes with your camera.</string>
+                <key>NFCReaderUsageDescription</key>
+                <string>This app can read NFC data.</string>
+            </dict>
+        </plist>
+    </ios>
+    <android xmlns:android="http://schemas.android.com/apk/res/android">
+        <!-- Update custom manifest! -->
+        <manifest android:versionCode="7" android:versionName="1.0.1.0" package="com.dustinrunnells.ssss">
+            <uses-permission android:name="android.permission.CAMERA"/>
+            <uses-feature android:name="android.hardware.camera"/>
+            <uses-feature android:name="android.hardware.nfc" android:required="false" />
+            <uses-feature android:name="android.hardware.location" android:required="false" />
+            <uses-feature android:name="android.hardware.location.gps" android:required="false" />
+        </manifest>
+    </android>
+    <modules>
+        <module platform="iphone">ti.nfc</module>
+        <module platform="android">ti.barcode</module>
+        <module platform="android">ti.nfc</module>
+        <module platform="iphone">ti.barcode</module>
+    </modules>
+    <deployment-targets>
+        <target device="android">true</target>
+        <target device="ipad">true</target>
+        <target device="iphone">true</target>
+    </deployment-targets>
+    <sdk-version>8.3.1.GA</sdk-version>
+    <plugins>
+        <plugin version="1.0">ti.alloy</plugin>
+    </plugins>
+    <property name="appc-app-id" type="string">5e66ff3b39de6c05f9e9d69f</property>
+</ti:app>
