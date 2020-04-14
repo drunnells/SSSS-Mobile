@@ -10,7 +10,7 @@ Website/FAQ: https://ssssmobile.app
 Based on the SSSS tool by B. Poettering (http://point-at-infinity.org/ssss/>http://point-at-infinity.org/ssss/) using the ssss-js
 library by Gabriel Burca (https://www.npmjs.com/package/ssss-js).
 
-This app is intended to protect potentially important information. Please take all necessary backup precautions and use at your own risk!
+__If you intend to protect potentially important information, please take all necessary backup precautions and use at your own risk!__
 
 ### Status
 Currently published in the Google Play store and Apple App Store
@@ -27,9 +27,11 @@ Javascript/Node:
   - bignumber.js by Michael Mclaughlin - https://travis-ci.org/github/MikeMcl/bignumber.js
   - qrcodejs by Shim Sangmin - https://github.com/davidshimjs/qrcodejs
   - JQuery - http://jquery.com (Help and QR Code view are actually Webviews)
+  - secure-random-password - https://github.com/rackerlabs/secure-random-password
 
 Icons:
   - Sergey Ershov - https://www.iconfinder.com/iconsets/multimedia-75
+  - Cole Bemis - https://www.iconfinder.com/iconsets/feather-2
   - Paste Icon by Freepik - https://www.flaticon.com/free-icon/paste_178922
 
 Font:
