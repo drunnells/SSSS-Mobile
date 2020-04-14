@@ -12,7 +12,15 @@
 						</View>
 						<View id="boxSM">
 							<Label id="textInputLabelSM" class="textInputLabel">Secret Message</Label>
-							<TextField id="textInputFieldSM" keyboardType="Ti.UI.KEYBOARD_TYPE_DEFAULT" />
+							<View id="boxSMContainer">
+                                <TextField id="textInputFieldSM" keyboardType="Ti.UI.KEYBOARD_TYPE_DEFAULT" />
+                                <View id="boxSMButtonBox">
+                                    <ImageView id="secretVisBtn"></ImageView>
+                                    <ImageView id="secretCopyBtn"></ImageView>
+                                    <ImageView id="secretToolsBtn"></ImageView>
+                                </View>
+                                <Label id="hiddenText"></Label>
+							</View>
 						</View>
 						<View id="boxThreshold">
 							<Label id="textInputLabelThreshold" class="textInputLabel">Threshold</Label>
@@ -49,6 +57,41 @@
 			    <View id="writeNfcBox">
 			        <Label id="writeNfcBoxText">Approach NFC Tag for writing.</Label>
 			    </View>
+				<View id="secretToolsView">
+				    <View id="secretToolsBackgroundView"></View>
+                    <ScrollView id="secretToolsContainerView" contentHeight="auto" contentWidth="TI.UI.SIZE" scrollType="vertical">
+			            <Label class="toolInfoLabel">Generate Cryptographically-Secure Random String</Label>
+				        <View id="toolLengthRow" class="toolRow">
+				            <Label class="toolLabel">Length:</Label>
+							<TextField id="smToolsLength" class="toolTextField" keyboardType="Ti.UI.KEYBOARD_TYPE_NUMBER_PAD" />
+				        </View>
+				        <View class="toolRow">
+				            <Label class="toolLabel">Include Numbers:</Label>
+				            <Switch class="toolSwitch" id="smToolsNumbers"></Switch>
+				        </View>
+				        <View class="toolRow">
+				            <Label class="toolLabel">Include Symbols:</Label>
+				            <Switch class="toolSwitch" id="smToolsSymbols"></Switch>
+				        </View>
+				        <View class="toolRow">
+				            <Label class="toolLabel">Include Lowercase:</Label>
+				            <Switch class="toolSwitch" id="smToolsLowercase"></Switch>
+				        </View>
+				        <View class="toolRow">
+				            <Label class="toolLabel">Include Uppercase:</Label>
+				            <Switch class="toolSwitch" id="smToolsUppercase"></Switch>
+				        </View>
+				        <View class="toolRow">
+				            <Label class="toolLabel">Exclude Similar Characters:</Label>
+				            <Switch class="toolSwitch" id="smToolsSimilarCharacters"></Switch>
+				        </View>
+				        <View class="toolRow">
+                            <Button id='secretToolsGenerateBtn'>Generate</Button>
+                            <Button id='secretToolsCancelBtn'>Cancel</Button>
+                        </View>
+                        <WebView id='passwordWebview'></WebView>
+                    </ScrollView>
+				</View>
 				<View id="splitHelpView" class="helpView">
 				    <View class="helpBackgroundView"></View>
 				    <View class="helpContainerView">

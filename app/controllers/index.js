@@ -15,9 +15,11 @@
  *   - bignumber.js by Michael Mclaughlin - https://travis-ci.org/github/MikeMcl/bignumber.js
  *   - qrcodejs by Shim Sangmin - https://github.com/davidshimjs/qrcodejs
  *   - JQuery - http://jquery.com (Help and QR Code view are actually Webviews)
+ *   - secure-random-password - https://github.com/rackerlabs/secure-random-password#browser-support
  * 
  * Icons:
  *   - Sergey Ershov - https://www.iconfinder.com/iconsets/multimedia-75
+ *   - Cole Bemis - https://www.iconfinder.com/iconsets/feather-2
  *   - Paste Icon by Freepik - https://www.flaticon.com/free-icon/paste_178922
  * 
  * Font:
@@ -43,7 +45,7 @@ var ssss = require('ssss.js');
 var debug = false; // Do not load external external modules, display test data. Useful for quick TiShadow runs.
 var logAll = false; // Enable logging. debugLog() will call console.log() if true.
 
-var version = "1.0.1.0"; // Update in custom AndroidManifest.xml AND tiapp.xml's "version" and android manifest section.
+var version = "1.0.2.0"; // Update in custom AndroidManifest.xml AND tiapp.xml's "version" and android manifest section.
 
 var globalSharesArray = Array();
 var copyAllLabel;
@@ -53,6 +55,7 @@ if (Ti.Platform.osname == 'android') {
 }
 var qrcodeHtmlFile = Ti.Filesystem.resourcesDirectory + "/qrcode.html";
 var helpHtmlFile = Ti.Filesystem.resourcesDirectory + "/help.html";
+var passwordHtmlFile = Ti.Filesystem.resourcesDirectory + "/generate-password.html";
 var hasCamera = true;
 if (debug) {
 	hasCamera = false;
@@ -69,6 +72,7 @@ var hasNfc = false;
 var nfc;
 var nfcAdapter;
 var emailDialog;
+var secretHidden = false;
 
 if (!debug) {
 nfc = require('ti.nfc');
@@ -108,6 +112,46 @@ var combineActivityIndicator = Ti.UI.createActivityIndicator({
 //
 // Listeners
 //
+$.secretToolsBtn.addEventListener('click',function() {
+    debugLog('Open secret options');
+    hideKeyboard();
+    $.secretToolsView.show();
+});
+
+$.secretCopyBtn.addEventListener('click',function() {
+    debugLog('Copy SM');
+    //hideKeyboard();
+    Ti.UI.Clipboard.setText($.textInputFieldSM.value);
+    toastMessage("Coppied");
+});
+
+$.secretToolsGenerateBtn.addEventListener('click',function() {
+    debugLog('Generate Secret');
+    if (generateSecret()) {
+        hideKeyboard();
+        $.secretToolsView.hide();
+    }
+});
+
+$.secretToolsCancelBtn.addEventListener('click',function() {
+    debugLog('Cancel secret tools');
+    hideKeyboard();
+    $.secretToolsView.hide();
+});
+
+$.secretVisBtn.addEventListener('click',function() {
+    debugLog('Change Password Mask');
+    hiddenSecretSwap();
+});
+
+$.hiddenText.addEventListener('click',function() {
+    $.textInputFieldSM.focus();
+});
+
+$.textInputFieldSM.addEventListener('change',function() {
+    addHideCharacters();
+});
+
 $.splitTab.addEventListener('selected',function() {
     closeHelp();
 });
@@ -313,11 +357,13 @@ $.splitHelpView.hide();
 $.combineHelpView.hide();
 $.splitShareView.hide();
 $.combineOverlayView.hide();
+$.secretToolsView.hide();
 $.winSplit.add(splitActivityIndicator);
 $.winCombine.add(combineActivityIndicator);
 $.splitShareQrCodeView.url = qrcodeHtmlFile;
 $.splitHelpWebview.url = helpHtmlFile;
 $.combineHelpWebview.url = helpHtmlFile;
+$.passwordWebview.url = passwordHtmlFile;
 
 if (isIos) {
     $.shareActionButtons.remove($.splitShareNfcBtn);
@@ -342,6 +388,81 @@ setTimeout(function() {
 //
 
 // SSSS Split
+function addHideCharacters() {
+    $.hiddenText.text = " ";
+    for (lCount = 0; lCount < $.textInputFieldSM.value.length; lCount++) {
+        if (lCount < 15) {
+            $.hiddenText.text += '●';
+        }
+    }
+}
+
+function generateSecret() {
+    var errorsArray = Array();
+    var smToolsLength = $.smToolsLength.value;
+    var smToolsNumbers = $.smToolsNumbers.value;
+    var smToolsSymbols = $.smToolsSymbols.value;
+    var smToolsLowercase = $.smToolsLowercase.value;
+    var smToolsUppercase = $.smToolsUppercase.value;
+    var smToolsSimilarCharacters = $.smToolsSimilarCharacters.value;
+    
+    if (smToolsLength < 5) {
+        errorsArray.push("Generated string must be longer than 4 characters.");
+    }
+    if (smToolsLength > 128) {
+        errorsArray.push("Generated string must be less than 128 characters.");
+    }
+    if ((!smToolsNumbers) && (!smToolsSymbols) && (!smToolsLowercase) && (!smToolsUppercase)) {
+        errorsArray.push("Generated string contain at least numbers, symbols, lowercase letters or uppercase letters.");
+    }
+    
+    if (errorsArray.length > 0) {
+        errorString = "Please correct:\n";
+        var i;
+        for (i in errorsArray) {
+            errorString += "* " + errorsArray[i] + "\n";
+        }
+        alert(errorString);
+        return false;
+    }
+    
+    var smToolsOptions = {
+            length: smToolsLength,
+            numbers: smToolsNumbers,
+            symbols: smToolsSymbols,
+            lowercase: smToolsLowercase,
+            uppercase: smToolsUppercase,
+            excludeSimilarCharacters: smToolsSimilarCharacters,
+    };
+    var generatedString = $.passwordWebview.evalJS('getRandomPassword(' + JSON.stringify(smToolsOptions) + ')');
+        
+    if (generatedString) {
+            debugLog("Generated String: " + generatedString);
+            $.textInputFieldSM.value = generatedString;
+            addHideCharacters();
+            return true;
+    } else {
+            alert("Unable to generate secret string!");
+            return false;
+    }
+}
+
+function hiddenSecretSwap() {
+    if (secretHidden) {
+        secretHidden = false;
+        $.secretVisBtn.setImage('/icon_eye.png');
+        debugLog('Eye Open');
+        $.hiddenText.hide();
+        $.textInputFieldSM.show();
+    } else {
+        secretHidden = true;
+        $.secretVisBtn.setImage('/icon_eye_closed.png');
+        debugLog('Eye Closed');
+        $.hiddenText.show();
+        $.textInputFieldSM.hide();
+    }
+}
+
 function doSplit(threshold,numShares,secret,token) {
 	var toReturn = false;
 	//var secret    = 'This is test string #2.';
@@ -473,13 +594,13 @@ function validateShareForm() {
     debugLog("INPUT Threshold: " + $.textInputFieldThreshold.value);
     debugLog("INPUT Shares: " + parseInt($.textInputFieldShares.value));
     debugLog("INPUT Token: " + parseInt($.textInputFieldToken.value));
-    if ($.textInputFieldSM.value.length < 1) { errorsArray.push("* Missing secret message."); }
-    if ($.textInputFieldSM.value.length > 128) { errorsArray.push("* Secret message must be less than 128 characters long."); }
-    if ($.textInputFieldThreshold.value < 2) { errorsArray.push("* Threshold must be greater than 1."); }
-    if (parseInt($.textInputFieldShares.value) < 2) { errorsArray.push("* Number of shares must be greater than 1."); }
-    if (parseInt($.textInputFieldShares.value) > 50) { errorsArray.push("* Number of shares must be less than 50."); }
-    if (parseInt($.textInputFieldThreshold.value) > parseInt($.textInputFieldShares.value)) { errorsArray.push("* Threshold can not be greater than the total number of shares."); }
-    if ($.textInputFieldToken.value.length > 128) { errorsArray.push("* Token must be less than 128 characters long."); }
+    if ($.textInputFieldSM.value.length < 1) { errorsArray.push("Missing secret message."); }
+    if ($.textInputFieldSM.value.length > 128) { errorsArray.push("Secret message must be less than 128 characters long."); }
+    if ($.textInputFieldThreshold.value < 2) { errorsArray.push("Threshold must be greater than 1."); }
+    if (parseInt($.textInputFieldShares.value) < 2) { errorsArray.push("Number of shares must be greater than 1."); }
+    if (parseInt($.textInputFieldShares.value) > 50) { errorsArray.push("Number of shares must be less than 50."); }
+    if (parseInt($.textInputFieldThreshold.value) > parseInt($.textInputFieldShares.value)) { errorsArray.push("Threshold can not be greater than the total number of shares."); }
+    if ($.textInputFieldToken.value.length > 128) { errorsArray.push("Token must be less than 128 characters long."); }
     if ($.textInputFieldToken.value.length > 0) {
         var tokenStr = $.textInputFieldToken.value.trim();
         var testRegex = /^[A-Za-z0-9_]+$/
@@ -491,7 +612,7 @@ function validateShareForm() {
         errorString = "Please correct:\n";
         var i;
         for (i in errorsArray) {
-            errorString += errorsArray[i] + "\n";
+            errorString += "* " + errorsArray[i] + "\n";
         }
         alert(errorString);
     } else {

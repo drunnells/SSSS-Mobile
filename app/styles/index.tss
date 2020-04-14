@@ -168,11 +168,11 @@
 }
 
 ".helpBtn": {
-	image: "/icon_questionmark.png",
-	top: "20dp",
-	right: "2dp",
-	width: "40dp",	
-	height: "40dp",	
+	image: "/icon_info.png",
+	top: "25dp",
+	right: "5dp",
+	width: "30dp",	
+	height: "30dp",	
 	bubbleParent: true,
 }
 
@@ -244,6 +244,17 @@
 "#boxSM": {
 	width: "90%",
 	height: 80,
+	layout: "vertiacl",
+}
+
+"#boxSMContainer": {
+	top: 35,
+	width: "100%",
+	height: Ti.UI.SIZE,
+	layout: "horizontal",
+	borderColor: "#000000",
+	borderWidth: 2,
+	borderRadius: 5,
 }
 
 "#textInputLabelSM": {
@@ -251,8 +262,53 @@
 }
 
 "#textInputFieldSM": {
-	width: "100%",
+	width: "70%",
 	bottom: 0,
+	left: 0,
+	borderColor: "white",
+	borderWidth: 0,
+	borderRadius: 0,
+	passwordMask: false,
+	visible: true,
+	bubbleParent: true,
+}
+
+"#hiddenText": {
+	width: "70%",
+	height: "100%",
+	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+	bottom: 0,
+	left: "-100%",
+	borderColor: "white",
+	visible: false,
+}
+
+"#boxSMButtonBox": {
+	width: "30%",	
+}
+
+"#secretVisBtn": {
+	right: "66",
+	width: "28",
+	height: "28",
+	image: "/icon_eye.png",
+	bubbleParent: true,
+}
+
+"#secretCopyBtn": {
+	right: "34",
+	width: "28",
+	height: "28",
+	image: "/icon_copy.png",
+	bubbleParent: true,
+}
+
+"#secretToolsBtn": {
+	right: "4",
+	width: "28",
+	height: "28",
+	image: "/icon_gear.png",
+	bubbleParent: true,
 }
 
 "#boxThreshold": {
@@ -521,6 +577,79 @@
 "#scanNfcBoxText": {
 	color: 'black',
 	font: { fontSize: '20%' },
+}
+
+//
+// Secret Tools
+//
+"#secretToolsView": {
+	width: "100%",
+	height: "100%",
+	visible: false,
+}
+
+"#secretToolsBackgroundView": {
+	width: "100%",
+	height: "100%",
+	backgroundColor: "#000",
+	opacity: 0.5,
+}
+
+"#secretToolsContainerView": {
+	layout: "vertical",			
+	backgroundColor: "#fff",
+	width: "95%",
+	height: "95%",
+	borderColor: "#000",
+	borderWidth: 2,
+	borderRadius: 10,
+	contentWidth: "auto",
+}
+
+".toolInfoLabel": {
+	font: {
+		fontSize: 25,
+		fontFamily: "Arimo-Regular.ttf",
+		fontWeight: "bold",
+	},
+}
+
+"#toolLengthRow": {
+	top: 5,
+}
+
+"#secretToolsCancelBtn": {
+	left: 5,	
+}
+
+".toolRow": {
+	top: 5,
+	layout: "horizontal",
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+}
+
+".toolLabel": {
+	width: Ti.UI.SIZE,
+	fontWeight: "normal",
+}
+
+".toolTextField": {
+	left: 5,
+	width: 50,
+}
+
+".toolSwitch": {
+	left: 5,
+	width: Ti.UI.SIZE,
+	backgroundDisabledColor: "#ccc",
+	backgroundFocusedColor: "#ccc",
+}
+
+"#passwordWebview": {
+	height: 10,
+	width: 10,
+	backgroundColor: "white",
 }
 
 //

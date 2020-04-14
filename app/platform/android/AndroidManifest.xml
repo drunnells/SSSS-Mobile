@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.dustinrunnells.ssss" android:versionCode="7" android:versionName="1.0.1.0">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.dustinrunnells.ssss" android:versionCode="8" android:versionName="1.0.2.0">
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="28"/>
 	<application android:icon="@drawable/appicon" android:label="SSSS Mobile" android:name="SsssMobileApplication" android:debuggable="false" android:usesCleartextTraffic="true" android:theme="@style/Theme.AppCompat.NoTitleBar.Fullscreen" android:resizeableActivity="true">
 		<activity android:name=".SsssMobileActivity" android:configChanges="fontScale|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode|density" android:label="@string/app_name" android:theme="@style/Theme.Titanium" android:alwaysRetainTaskState="true">
@@ -109,7 +109,7 @@
 	<uses-feature android:name="android.hardware.location" android:required="false"/>
 	<uses-feature android:name="android.hardware.location.gps" android:required="false"/>
 	<uses-permission android:name="android.permission.CAMERA"/>
-        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 	<uses-permission android:name="android.permission.VIBRATE"/>
 	<uses-permission android:name="android.permission.FLASHLIGHT"/>
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
