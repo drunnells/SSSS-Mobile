@@ -13,9 +13,10 @@ library by Gabriel Burca (https://www.npmjs.com/package/ssss-js).
 __If you intend to protect potentially important information, please take all necessary backup precautions and use at your own risk!__
 
 ### Status
-Currently published in the Google Play store and Apple App Store
+Currently published here:
 * Google Play - https://play.google.com/store/apps/details?id=com.dustinrunnells.ssss
 * Apple App Store - https://apps.apple.com/us/app/ssss-mobile/id1505136665?ls=1
+* Amazon App Store - https://www.amazon.com/dp/B086PHQ9XF
 
 ## Dependancies
 Titanium Modules:
