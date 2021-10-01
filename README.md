@@ -7,7 +7,7 @@
 
 Website/FAQ: https://ssssmobile.app
 
-Based on the SSSS tool by B. Poettering (http://point-at-infinity.org/ssss/>http://point-at-infinity.org/ssss/) using the ssss-js
+Based on the SSSS tool by B. Poettering (http://point-at-infinity.org/ssss/) using the ssss-js
 library by Gabriel Burca (https://www.npmjs.com/package/ssss-js).
 
 __If you intend to protect potentially important information, please take all necessary backup precautions and use at your own risk!__
