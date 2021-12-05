@@ -21,6 +21,7 @@ body {
 	padding: 0;
 	margin: 0;
 	background-color: #ffffff;
+	overflow: hidden;
 }
 
 #container {
@@ -30,6 +31,7 @@ body {
 	height: 500px;
 	margin: 0;
 	background-color: #ffffff;
+	overflow: hidden;
 }
 
 </style>
@@ -49,7 +51,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
 	useSVG : true,
 });
 
-function makeCode(inText) {		
+function makeCode(inText) {
 	qrcode.makeCode(inText);
 	var sw = window.innerWidth;
 	var scaleTo = sw / 500;
@@ -74,7 +76,7 @@ function setZoom(zoom,el) {
 
 	    el.style["transform"] = s;
 	    el.style["transformOrigin"] = oString;
-      
+
 }
 
 //makeCode("TEST");

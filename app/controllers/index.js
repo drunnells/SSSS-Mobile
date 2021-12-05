@@ -1,36 +1,36 @@
 /*
- * SSSS Mobile - 2020 Dustin Runnells
- * 
+ * SSSS Mobile - 2021 Dustin Runnells
+ *
  * Based on the SSSS tool by B. Poettering (http://point-at-infinity.org/ssss/) using the ssss-js
  * library by Gabriel Burca (https://www.npmjs.com/package/ssss-js).
- * 
+ *
  * Depends on:
- * 
+ *
  * Titanium Modules:
  *   - ti.nfc - https://github.com/appcelerator-modules/ti.nfc
  *   - ti.barcode - https://github.com/appcelerator-modules/ti.barcode
- * 
+ *
  * Javascript/Node:
  *   - ssss-js by Gabriel Burca - https://www.npmjs.com/package/ssss-js
  *   - bignumber.js by Michael Mclaughlin - https://travis-ci.org/github/MikeMcl/bignumber.js
  *   - qrcodejs by Shim Sangmin - https://github.com/davidshimjs/qrcodejs
  *   - JQuery - http://jquery.com (Help and QR Code view are actually Webviews)
  *   - secure-random-password - https://github.com/rackerlabs/secure-random-password#browser-support
- * 
+ *
  * Icons:
  *   - Sergey Ershov - https://www.iconfinder.com/iconsets/multimedia-75
  *   - Cole Bemis - https://www.iconfinder.com/iconsets/feather-2
  *   - Paste Icon by Freepik - https://www.flaticon.com/free-icon/paste_178922
- * 
+ *
  * Font:
  *   - Arimo by Steve Matteson - https://fonts.google.com/specimen/Arimo
- * 
- * 
+ *
+ *
  * Titanium SDK 8.3.1.
- * 
- * Google Play Package Build: 
+ *
+ * Google Play Package Build:
  *   appc run -p android -T dist-playstore -K <keystore> -P <keystore_password> -L ssss -O <dist_dir>
- * 
+ *
  */
 
 
@@ -45,7 +45,7 @@ var ssss = require('ssss.js');
 var debug = false; // Do not load external external modules, display test data. Useful for quick TiShadow runs.
 var logAll = false; // Enable logging. debugLog() will call console.log() if true.
 
-var version = "1.0.2.0"; // Update in custom AndroidManifest.xml AND tiapp.xml's "version" and android manifest section.
+var version = "1.0.3.0"; // Update in custom AndroidManifest.xml AND tiapp.xml's "version" and android manifest section.
 
 var globalSharesArray = Array();
 var copyAllLabel;
@@ -75,7 +75,7 @@ var emailDialog;
 var secretHidden = false;
 
 if (!debug) {
-nfc = require('ti.nfc');
+	nfc = require('ti.nfc');
     if (isIos) {
         debugLog('Creating ios nfc adapter...');
     	nfcAdapter = nfc.createNfcAdapter({
@@ -405,7 +405,7 @@ function generateSecret() {
     var smToolsLowercase = $.smToolsLowercase.value;
     var smToolsUppercase = $.smToolsUppercase.value;
     var smToolsSimilarCharacters = $.smToolsSimilarCharacters.value;
-    
+
     if (smToolsLength < 5) {
         errorsArray.push("Generated string must be longer than 4 characters.");
     }
@@ -415,7 +415,7 @@ function generateSecret() {
     if ((!smToolsNumbers) && (!smToolsSymbols) && (!smToolsLowercase) && (!smToolsUppercase)) {
         errorsArray.push("Generated string contain at least numbers, symbols, lowercase letters or uppercase letters.");
     }
-    
+
     if (errorsArray.length > 0) {
         errorString = "Please correct:\n";
         var i;
@@ -425,7 +425,7 @@ function generateSecret() {
         alert(errorString);
         return false;
     }
-    
+
     var smToolsOptions = {
             length: smToolsLength,
             numbers: smToolsNumbers,
@@ -435,7 +435,7 @@ function generateSecret() {
             excludeSimilarCharacters: smToolsSimilarCharacters,
     };
     var generatedString = $.passwordWebview.evalJS('getRandomPassword(' + JSON.stringify(smToolsOptions) + ')');
-        
+
     if (generatedString) {
             debugLog("Generated String: " + generatedString);
             $.textInputFieldSM.value = generatedString;
@@ -450,13 +450,13 @@ function generateSecret() {
 function hiddenSecretSwap() {
     if (secretHidden) {
         secretHidden = false;
-        $.secretVisBtn.setImage('/icon_eye.png');
+        $.secretVisBtn.image = '/icon_eye.png';
         debugLog('Eye Open');
         $.hiddenText.hide();
         $.textInputFieldSM.show();
     } else {
         secretHidden = true;
-        $.secretVisBtn.setImage('/icon_eye_closed.png');
+        $.secretVisBtn.image = '/icon_eye_closed.png';
         debugLog('Eye Closed');
         $.hiddenText.show();
         $.textInputFieldSM.hide();
@@ -467,7 +467,7 @@ function doSplit(threshold,numShares,secret,token) {
 	var toReturn = false;
 	//var secret    = 'This is test string #2.';
 	var hexInput  = false;
-	
+
 	debugLog("Processing Split:");
 	debugLog(" Threshold:" + threshold);
 	debugLog(" Shares:" + numShares);
@@ -541,24 +541,24 @@ function addShareResult(shareString,shareThreshold,shareShares,bgcolor) {
     	bubbleParent: true,
     	backgroundColor: bgcolor,
     });
-    
+
     var tempContainer = Ti.UI.createView({
         width: "100%",
         height: Ti.UI.SIZE,
     	bubbleParent: true,
     });
-    
+
     var tempCopyButton = Ti.UI.createImageView();
     $.addClass(tempCopyButton,'copyButton');
-    
+
     var tempShareButton = Ti.UI.createImageView();
     $.addClass(tempShareButton,'shareButton');
-    
+
     tempCopyButton.addEventListener('click', function() {
         Ti.UI.Clipboard.setText(shareString);
         toastMessage("Coppied");
     });
-    
+
     tempShareButton.addEventListener('click', function() {
         $.splitShareText.text = shareString;
         $.splitShareQrCodeView.evalJS("makeCode('" + shareString + "');");
@@ -567,7 +567,7 @@ function addShareResult(shareString,shareThreshold,shareShares,bgcolor) {
         lastShareShares = shareShares;
         $.splitShareView.show();
     });
-    
+
     tempContainer.add(Ti.UI.createLabel({
         text: shareString,
         width: "73%",
@@ -639,21 +639,21 @@ function toastMessage(customMessage) {
     if (isIos) {
         // window container
         indWin = Titanium.UI.createWindow();
- 
+
         //  view
         var indView = Titanium.UI.createView({bottom:50,height:30,width:250,borderRadius:10,backgroundColor:'#888',opacity:.9});
- 
+
         indWin.add(indView);
- 
+
         // message
         var message = Titanium.UI.createLabel({
             text: customMessage && typeof(customMessage!=='undefined') ? customMessage : L('please_wait'),
             color:'#fff',width:'auto',height:'auto',textAlign:'center',
             font:{fontSize:14,fontWeight:'bold'}});
- 
+
             indView.add(message);
             indWin.open();
- 
+
             interval = interval ? interval : 2500;
             setTimeout(function(){
                 indWin.close({opacity:0,duration:1000});
@@ -677,10 +677,10 @@ function setupQrCodeReader() {
         });
         qrreader.addEventListener('error',function(e) {
             $.combineOverlayView.hide();
-            alert('Error reading QR Code!');      
+            alert('Error reading QR Code!');
         });
-    }	
-	
+    }
+
 	if (debug || Ti.Media.hasCameraPermissions()) {
 		var cameras = Ti.Media.availableCameras;
 		var camerasArray = Array();
@@ -700,7 +700,7 @@ function setupQrCodeReader() {
 		}
 		debugLog('CAMERAS: ' + JSON.stringify(cameras));
 	}
-	
+
 	debugLog('DEFAULT CAMERA: ' + defaultCamera);
 }
 
@@ -708,7 +708,7 @@ function setupQrCodeReader() {
 function permReqCam() {
 	if (debug || Ti.Media.hasCameraPermissions()) {
 	    debugLog("App already has camera permission");
-	} else { 
+	} else {
 	    debugLog("Requesting camera permission");
 	    Ti.Media.requestCameraPermissions(function(e) {
 	             if (e.success === true) {
@@ -728,7 +728,7 @@ function doQrScan() {
 		return false;
 	}
     $.combineOverlayView.show();
-    
+
     var qrOverlayView = Ti.UI.createView({
         width: "100%",
         height: "100%",
@@ -741,9 +741,9 @@ function doQrScan() {
         qrreader.cancel();
         $.combineOverlayView.hide();
     });
-    
+
 	qrOverlayView.add(qrCancelButton);
-   
+
    try {
         qrreader.capture({
 	    	showCancel:false,
@@ -773,6 +773,7 @@ function androidNfcWriteBox(state) {
 	debugLog('NFC WRITE BOX STATE CHANGE: ' + state);
 	if (state == 'open') {
 		$.writeNfcBox.show();
+		restartAndroidForegroundDispatch();
 	} else {
 		$.writeNfcBox.hide();
         readyToWriteNfc = false;
@@ -787,11 +788,21 @@ function androidNfcBox(state) {
 	debugLog('NFC BOX STATE CHANGE: ' + state);
 	if (state == 'open') {
 		$.scanNfcBox.show();
+				restartAndroidForegroundDispatch();
         readyToWriteNfc = false;
 	} else {
 		$.scanNfcBox.hide();
         readyToWriteNfc = false;
 	}
+}
+
+function restartAndroidForegroundDispatch() {
+	  	try {
+	  	 	nfcAdapter.enableForegroundDispatch(dispatchFilter);
+				debugLog('FOREGROUND DISPATCHER ENABLED...');
+	  	} catch (e) {
+	 			debugLog('CAUGHT: Not able to enable foreground dispatch.');
+	 	 }
 }
 
 // ANDROID - If android has read a tag without NDEF data, do nothing on read, but do write if in write mode
@@ -845,7 +856,7 @@ function handleNfcDiscoveryAndroid(e) {
 				}
 			}
 		}
-	}	
+	}
 	androidNfcBox('close');
 	androidNfcWriteBox('close');
 }
@@ -856,21 +867,21 @@ function handleNfcDiscoveryIos(e) {
   debugLog(JSON.stringify(e.arrContentData));
   if(e.arrContentData){
   	var type = 'text';
-   
+
     var tempObj = JSON.parse(JSON.stringify(e.arrContentData));
     var typeStr = tempObj[0].typeFromNDEFData;
     var message = tempObj[0].NDEFConvertedCompleteString;
     var fromData = tempObj[0].NDEFContentFromData;
-    
+
     debugLog("typeStr: " + typeStr);
     debugLog("message: " + message);
     debugLog("fromData: " + fromData);
-   
+
     if (message.length > 3) {
        	message = message.substr(3,message.length - 3); // Unicode SOH Character?
     	debugLog('FIXED MESSAGE: ' + message);
         processNfc(message);
-    } 
+    }
   }
   nfcAdapter.invalidate(); // This is required for iOS only. Use "invalidate()" to invalidate a session.
 }
@@ -889,14 +900,14 @@ function startAndroidNfc() {
 		onTagDiscovered: handleNonNdef,
 		onTechDiscovered: handleNonNdef
 	});
-		
+
 	dispatchFilter = nfc.createNfcForegroundDispatchFilter({
 		intentFilters: [
 			{ action: nfc.ACTION_NDEF_DISCOVERED, mimeType: 'text/plain' },
-			{ action: nfc.ACTION_NDEF_DISCOVERED, scheme: 'http' }
+			//{ action: nfc.ACTION_NDEF_DISCOVERED, scheme: 'http' }
 		],
 		techLists: [
-			[ "android.nfc.tech.NfcF" ],
+			[ "android.nfc.tech.NfcF", "android.nfc.tech.NfcA", "android.nfc.Ndef" ],
 			[ "android.nfc.tech.Ndef" ],
 			[ "android.nfc.tech.MifareClassic" ],
 			[ "android.nfc.tech.NfcA" ]
@@ -912,19 +923,22 @@ function startAndroidNfc() {
 
 		//var act = $.winCombine.activity;
 		var act = Ti.Android.currentActivity;
-		//var act = Ti.Android.currentActivity;
+		debugLog('Adding INTENT listener...');
 		act.addEventListener('newintent', function(e) {
 			debugLog('NEW INTENT');
-		    nfcAdapter.onNewIntent(e.intent);
+			console.log(e);
+	    nfcAdapter.onNewIntent(e.intent);
 		});
+		debugLog('Adding RESUME listener...');
 		act.addEventListener('resume', function(e) {
 			debugLog('RESUME');
 		    try {
 			    nfcAdapter.enableForegroundDispatch(dispatchFilter);
 		    } catch (e) {
-		    	debugLog('CAUGHT: Not able to enable foreground dispatch.');
+		    	debugLog('CAUGHT: Not able to enable foreground dispatch on RESUME.');
 		    }
 		});
+		debugLog('Adding PAUSE listener...');
 		act.addEventListener('pause', function(e) {
 			debugLog('PAUSE');
 		    try {
@@ -933,11 +947,13 @@ function startAndroidNfc() {
 		    	debugLog('CAUGHT: Not able to disable foreground dispatch.');
 		    }
 		});
-	    try {
-		    nfcAdapter.enableForegroundDispatch(dispatchFilter);
-	    } catch (e) {
-	    	debugLog('CAUGHT: Not able to enable foreground dispatch.');
-	    }
+		debugLog('Adding FOREGROUND DISPATCHER...');
+	  try {
+	   	nfcAdapter.enableForegroundDispatch(dispatchFilter);
+			debugLog('FOREGROUND DISPATCHER ADDED...');
+	  } catch (e) {
+	 		debugLog('CAUGHT: Not able to enable foreground dispatch.');
+	  }
 	}
 }
 
@@ -960,18 +976,18 @@ function doAndroidNfcWrite() {
     var tech = nfc.createTagTechnologyNdef({
         tag: scannedTag
     });
-    
+
     // We checked when the tag was scanned that it supported the necessary tag type (Ndef in this case).
     if (!tech.isValid()) {
         alert("Failed to create Ndef tag type");
     	androidNfcWriteBox('close');
         return;
-    } 
+    }
 
     // Attempt to write an Ndef record to the tag
     try {
         tech.connect();
-        
+
         // It's possible that the tag is not writable, so we need to check first.
         if (!tech.isWritable()) {
             androidNfcWriteBox('close');
@@ -985,7 +1001,7 @@ function doAndroidNfcWrite() {
             var msg = nfc.createNdefMessage({
                 records: [ textRecord ]
             });
-    
+
             // For good measure, confirm that the message is not too big for the tag
             var blob = msg.toByte();
             if (blob.length > tech.getMaxSize()) {
