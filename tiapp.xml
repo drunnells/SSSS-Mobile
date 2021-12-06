@@ -51,10 +51,12 @@
     </ios>
     <android xmlns:android="http://schemas.android.com/apk/res/android">
         <!-- Update custom manifest! -->
-        <manifest android:versionCode="9" android:versionName="1.0.3.0" package="com.dustinrunnells.ssss">
-          <application android:theme="@style/Theme.AppDerived.NoTitleBar"
+        <manifest android:versionCode="14" android:versionName="1.0.3.0" package="com.dustinrunnells.ssss" xmlns:tools="http://schemas.android.com/tools">
+          <application android:theme="@style/Theme.AppCompat.NoTitleBar"
+            android:required="false"
             android:icon="@drawable/ic_launcher"
-            android:roundIcon="@drawable/ic_launcher_round" >
+            android:roundIcon="@drawable/ic_launcher_round"
+            tools:replace="android:required" >
                 <activity
                     android:configChanges="keyboardHidden|orientation|screenSize"
                     android:screenOrientation="portrait"
@@ -71,11 +73,10 @@
                 <activity
                     android:configChanges="keyboardHidden|orientation|screenSize"
                     android:name="org.appcelerator.titanium.TiTranslucentActivity"
-                    android:screenOrientation="portrait" android:theme="@style/Theme.AppDerived.NoTitleBar"/>
+                    android:screenOrientation="portrait" android:theme="@style/Theme.AppCompat.NoTitleBar"/>
             </application>
             <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="30"/>
 
-            <uses-feature android:name="android.hardware.nfc" android:required="false"/>
           	<uses-feature android:name="android.hardware.camera" android:required="false"/>
           	<uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
           	<uses-feature android:name="android.hardware.camera.flash" android:required="false"/>
@@ -85,11 +86,15 @@
           	<uses-feature android:name="android.hardware.location" android:required="false"/>
           	<uses-feature android:name="android.hardware.location.gps" android:required="false"/>
           	<uses-permission android:name="android.permission.CAMERA"/>
-            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
           	<uses-permission android:name="android.permission.VIBRATE"/>
           	<uses-permission android:name="android.permission.FLASHLIGHT"/>
           	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
           	<uses-permission android:name="android.permission.NFC"/>
+            <uses-permission android:name="android.permission.INTERNET" tools:node="remove" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" tools:node="remove" />
+            <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" tools:node="remove" />
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" tools:node="remove" />
+            <uses-feature android:name="android.hardware.nfc" android:required="false"/>
         </manifest>
     </android>
 

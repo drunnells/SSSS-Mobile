@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" android:versionCode="9" android:versionName="1.0.3.0" package="com.dustinrunnells.ssss" tools:replace="android:versionCode,android:versionName">
-	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="28"/>
-          <application android:theme="@style/Theme.AppCompat.NoTitleBar" android:icon="@drawable/ic_launcher" android:roundIcon="@drawable/ic_launcher_round" tools:replace="android:theme,android:icon,android:roundIcon">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" android:versionCode="14" android:versionName="1.0.3.0" package="com.dustinrunnells.ssss" tools:replace="android:versionCode,android:versionName">
+	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="30"/>
+          <application android:theme="@style/Theme.AppCompat.NoTitleBar" android:icon="@drawable/ic_launcher" android:roundIcon="@drawable/ic_launcher_round" android:required="false" tools:replace="android:theme,android:icon,android:roundIcon,android:required">
 		<activity android:name=".SsssMobileActivity" android:configChanges="fontScale|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode|density" android:label="@string/app_name" android:theme="@style/Theme.Titanium" android:alwaysRetainTaskState="true">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
@@ -99,7 +99,6 @@
 		<provider android:name="org.appcelerator.titanium.io.TiFileProvider" android:authorities="com.dustinrunnells.ssss.tifileprovider" android:exported="false" android:grantUriPermissions="true"/>
 		<service android:name="com.appcelerator.aps.APSAnalyticsService" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
 	</application>
-	<uses-feature android:name="android.hardware.nfc" android:required="false"/>
 	<uses-feature android:name="android.hardware.camera" android:required="false"/>
 	<uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
 	<uses-feature android:name="android.hardware.camera.flash" android:required="false"/>
@@ -109,9 +108,9 @@
 	<uses-feature android:name="android.hardware.location" android:required="false"/>
 	<uses-feature android:name="android.hardware.location.gps" android:required="false"/>
 	<uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 	<uses-permission android:name="android.permission.VIBRATE"/>
 	<uses-permission android:name="android.permission.FLASHLIGHT"/>
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 	<uses-permission android:name="android.permission.NFC"/>
+	<uses-feature android:name="android.hardware.nfc" android:required="false"/>
 </manifest>

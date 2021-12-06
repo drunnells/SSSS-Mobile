@@ -26,7 +26,8 @@
  *   - Arimo by Steve Matteson - https://fonts.google.com/specimen/Arimo
  *
  *
- * Titanium SDK 8.3.1.
+ * Titanium SDK 9.2.0, ti.nfc v4.0.0, ti.barcode v6.0.1
+ * Note: Remove unnecessary permissions from ti.barcode timodules.xml and comment out nfc requirement from ti.nfc timodules.xml. Needed to manually rebuild ti.nfc to get this to work.
  *
  * Google Play Package Build:
  *   appc run -p android -T dist-playstore -K <keystore> -P <keystore_password> -L ssss -O <dist_dir>
@@ -233,6 +234,7 @@ $.scanIconPaste.addEventListener('click', function() {
 
 $.scanIconTrash.addEventListener('click', function() {
     $.textAreaCombine.value = "";
+    $.combineResultValue.text = "";
 });
 
 $.splitShareDoneBtn.addEventListener('click', function() {
