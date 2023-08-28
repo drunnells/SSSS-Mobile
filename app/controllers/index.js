@@ -1,5 +1,5 @@
 /*
- * SSSS Mobile - 2021 Dustin Runnells
+ * SSSS Mobile - 2023 Dustin Runnells
  *
  * Based on the SSSS tool by B. Poettering (http://point-at-infinity.org/ssss/) using the ssss-js
  * library by Gabriel Burca (https://www.npmjs.com/package/ssss-js).
@@ -26,8 +26,9 @@
  *   - Arimo by Steve Matteson - https://fonts.google.com/specimen/Arimo
  *
  *
- * Titanium SDK 9.2.0, ti.nfc v4.0.0, ti.barcode v6.0.1
+ * Titanium SDK 12.1.2, ti.nfc v5.0.0, ti.barcode v6.0.1
  * Note: Remove unnecessary permissions from ti.barcode timodules.xml and comment out nfc requirement from ti.nfc timodules.xml. Needed to manually rebuild ti.nfc to get this to work.
+ * Updated Note: ti.nfc v5.0.0 for Android needed NfcForegroundDispatchFilter.java updated to PendingIntent.FLAG_MUTABLE instead of FLAG_IMMUTABLE
  *
  * Google Play Package Build:
  *   appc run -p android -T dist-playstore -K <keystore> -P <keystore_password> -L ssss -O <dist_dir>
@@ -46,7 +47,7 @@ var ssss = require('ssss.js');
 var debug = false; // Do not load external external modules, display test data. Useful for quick TiShadow runs.
 var logAll = false; // Enable logging. debugLog() will call console.log() if true.
 
-var version = "1.0.3.0"; // Update in custom AndroidManifest.xml AND tiapp.xml's "version" and android manifest section.
+var version = Ti.App.version; // Update in custom AndroidManifest.xml AND tiapp.xml's "version".
 
 var globalSharesArray = Array();
 var copyAllLabel;
@@ -905,8 +906,7 @@ function startAndroidNfc() {
 
 	dispatchFilter = nfc.createNfcForegroundDispatchFilter({
 		intentFilters: [
-			{ action: nfc.ACTION_NDEF_DISCOVERED, mimeType: 'text/plain' },
-			//{ action: nfc.ACTION_NDEF_DISCOVERED, scheme: 'http' }
+			{ action: nfc.ACTION_NDEF_DISCOVERED, mimeType: 'text/plain' }
 		],
 		techLists: [
 			[ "android.nfc.tech.NfcF", "android.nfc.tech.NfcA", "android.nfc.Ndef" ],
@@ -918,17 +918,13 @@ function startAndroidNfc() {
 	debugLog('Created dispatchFilter..');
 	if (!nfcAdapter.isEnabled()) {
 		debugLog('NFC NOT Enabled..');
-	    //nfcAdapter.disableForegroundDispatch();
 	} else {
 		debugLog('NFC Enabled..');
 		hasNfc = true;
-
-		//var act = $.winCombine.activity;
 		var act = Ti.Android.currentActivity;
 		debugLog('Adding INTENT listener...');
 		act.addEventListener('newintent', function(e) {
 			debugLog('NEW INTENT');
-			console.log(e);
 	    nfcAdapter.onNewIntent(e.intent);
 		});
 		debugLog('Adding RESUME listener...');
