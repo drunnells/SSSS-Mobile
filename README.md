@@ -3,7 +3,7 @@
 # SSSS Mobile
 ## Shamir's Secret Sharing Scheme Split & Combine Functions for Android & iOS
 
-2020 Dustin Runnells (dustin@runnells.name)
+2023 Dustin Runnells (dustin@runnells.name)
 
 Website/FAQ: https://ssssmobile.app
 
@@ -42,7 +42,7 @@ Font:
 Distributing this app for iOS requires a Provisioning Profile with a non-wildcard App Identifier that contains the "NFC Tag Reading" capability.
 
 ## Build
-Titanium SDK 8.3.1.
+Titanium SDK 12.1.2.GA.
 
 Run on Android device:
 ```appc run -p android --build-only```
