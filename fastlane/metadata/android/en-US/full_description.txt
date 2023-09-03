@@ -1,21 +1,21 @@
-SSSS Mobile is an implementation of Shamir's Secret Sharing Scheme (SSSS). In cryptography, Secret Sharing allows you to split a short "secret" text into multiple shares for later reconstruction when a specified threshold of shares are available.<br>
-<br>
-With SSSS Mobile, shares can be copied into another application, encoded in a QR Code, written to an NFC tag or shared via email. Shares can later be retrieved from text, QR Code or NFC Tag. The optional Token parameter is prefixed to the share text to help describe the share or threshold.<br>
-<br>
-Some possible use cases for SSSS Mobile:<br>
+SSSS Mobile is an implementation of Shamir's Secret Sharing Scheme (SSSS). In cryptography, Secret Sharing allows you to split a short "secret" text into multiple shares for later reconstruction when a specified threshold of shares are available.
+
+With SSSS Mobile, shares can be copied into another application, encoded in a QR Code, written to an NFC tag or shared via email. Shares can later be retrieved from text, QR Code or NFC Tag. The optional Token parameter is prefixed to the share text to help describe the share or threshold.
+
+Some possible use cases for SSSS Mobile:
 <ul>
 <li>Split a short message intended for a group of individuals to decode only when the group is together. It may be interesting to store the shares on NFC tags attached to physical objects in this scenario.</li>
 <li>Split an important but rarely used strong password across multiple QR Codes. Print and hide these QR codes in multiple locations for later retrieval.</li>
 <li>Encrypt a large file with a difficult to remember password. Store the file in a potentially insecure location, but store the SSSS shares that protect your password in various other locations. Perhaps hide a large number of shares but only require a lower threshold for combination later if there is potential for some shares to be lost.</li>
 <li>Encrypt the private key to your Bitcoin or other cryptocurrency holdings with an impossible to remember password. SSSS split the password, print the shares to QR Code and bury them in multiple locations. Require a lower threshold than the total number of hidden shares in case some are lost or damaged over time.</li>
 </ul>
-<b>IMPORTANT #1</b>: If you intend to protect potentially important information, please take all necessary backup precautions and use at your own risk!<br>
-<br>
-<b>IMPORTANT #2</b>: The threshold must be met EXACTLY at the time of retrieval/combination. You cannot combine more or less than the exact threshold specified at the time that the share set is generated. It may be useful to use the optional Token parameter to indicate the threshold. Combining the wrong number of shares or invalid shares may result in an error OR an incorrect secret message reconstruction.<br>
-<br>
-<b>IMPORTANT #3</b>: The secret message must be 128 characters or less. The longer the message, the more processing time will be required for splitting and combining. For large secrets it is recommended to encrypt with a tool such as PGP/GPG and SSSS split only the password.<br>
-<br>
-Additional Notes:<br>
+<b>IMPORTANT-1</b>: If you intend to protect potentially important information, please take all necessary backup precautions and use at your own risk!
+
+<b>IMPORTANT-2</b>: The threshold must be met EXACTLY at the time of retrieval/combination. You cannot combine more or less than the exact threshold specified at the time that the share set is generated. It may be useful to use the optional Token parameter to indicate the threshold. Combining the wrong number of shares or invalid shares may result in an error OR an incorrect secret message reconstruction.
+
+<b>IMPORTANT-3</b>: The secret message must be 128 characters or less. The longer the message, the more processing time will be required for splitting and combining. For large secrets it is recommended to encrypt with a tool such as PGP/GPG and SSSS split only the password.
+
+Additional Notes:
 <ul>
 <li>This app uses the ssss-js library by Gabriel Burca to be compatible with the "ssss" UNIX/Linux application by B. Poettering.</li>
 </ul>
