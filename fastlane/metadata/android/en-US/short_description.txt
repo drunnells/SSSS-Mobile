@@ -1,0 +1,1 @@
+Split and combine secret messages using text, QR Codes or NFC tags with SSSS.
