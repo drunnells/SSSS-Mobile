@@ -19,9 +19,12 @@ Currently published here:
 * Amazon App Store - https://www.amazon.com/dp/B086PHQ9XF
 
 ## Dependancies
+[Titanium SDK](https://titaniumsdk.com/)
+
 Titanium Modules:
-  - ti.nfc - https://github.com/appcelerator-modules/ti.nfc
-  - ti.barcode - https://github.com/appcelerator-modules/ti.barcode
+  - ti.nfc - https://github.com/tidev/ti.nfc
+    - I needed the NfcForegroundDispatchFilter to include FLAG_MUTABLE: [Pull Request #79](https://github.com/tidev/ti.nfc/pull/79)
+  - ti.barcode - https://github.com/tidev/ti.barcode
 
 Javascript/Node:
   - ssss-js by Gabriel Burca - https://www.npmjs.com/package/ssss-js
@@ -45,10 +48,10 @@ Distributing this app for iOS requires a Provisioning Profile with a non-wildcar
 Titanium SDK 12.1.2.GA.
 
 Run on Android device:
-```appc run -p android --build-only```
+```ti build -p android --build-only```
 
 Run on iPhone:
 ```appc run -p ios --build-only```
 
 Google Play Package Build:
-```appc run -p android -T dist-playstore -K <keystore> -P <keystore_password> -L ssss -O <dist_dir>```
+```ti build -p android -T dist-playstore -K <keystore> -P <keystore_password> -L ssss -O <dist_dir>```
