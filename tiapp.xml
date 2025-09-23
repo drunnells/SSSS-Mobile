@@ -2,11 +2,11 @@
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>com.dustinrunnells.ssss</id>
     <name>SSSS Mobile</name>
-    <version>1.0.3.3</version>
+    <version>1.0.4.5</version>
     <publisher>Dustin Runnells</publisher>
     <url>http://dustin.runnells.name</url>
     <description>A mobile implementation of the Shamir's Secret Sharing Scheme (SSSS). Generate and combine shares using your mobile device's NFC reader and QR Code scanner.</description>
-    <copyright>2023 by Dustin Runnells</copyright>
+    <copyright>2025 by Dustin Runnells</copyright>
     <icon>appicon.png</icon>
     <fullscreen>true</fullscreen>
     <navbar-hidden>false</navbar-hidden>
@@ -61,7 +61,7 @@
         <target device="ipad">true</target>
         <target device="iphone">true</target>
     </deployment-targets>
-    <sdk-version>12.1.2.GA</sdk-version>
+    <sdk-version>13.0.0.GA</sdk-version>
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
     </plugins>
