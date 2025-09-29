@@ -2,7 +2,7 @@
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>com.dustinrunnells.ssss</id>
     <name>SSSS Mobile</name>
-    <version>1.0.4.5</version>
+    <version>1.0.4.7</version>
     <publisher>Dustin Runnells</publisher>
     <url>http://dustin.runnells.name</url>
     <description>A mobile implementation of the Shamir's Secret Sharing Scheme (SSSS). Generate and combine shares using your mobile device's NFC reader and QR Code scanner.</description>
@@ -54,7 +54,7 @@
         <module platform="iphone">ti.barcode</module>
         <module platform="iphone">ti.nfc</module>
         <module platform="android" version="6.0.1">ti.barcode</module>
-        <module platform="android" version="5.0.0">ti.nfc</module>
+        <module platform="android" version="6.0.0">ti.nfc</module> <!-- moudule should be re-built with uses-feature android.hardware.nfc set to false in timodule.xml -->
     </modules>
     <deployment-targets>
         <target device="android">true</target>
